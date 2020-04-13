@@ -1,5 +1,6 @@
 body {
-	background-color: #C1FFC1;
+	background-color:#C1FFC1;
+	font-family:"Courier New","Microsoft Yahei";
 }
 
 div#footer {
@@ -8,5 +9,5 @@ div#footer {
 	right:0;
 	margin:0 auto;
 	bottom:30px;
-	width:150px;
+	width:170px;
 }
