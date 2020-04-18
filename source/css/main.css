@@ -1,13 +1,21 @@
-body {
+body{
 	background-color:#C1FFC1;
 	font-family:"Courier New","Microsoft Yahei";
 }
 
-div#footer {
+div#page_end{
 	position:fixed;
 	left:0;
 	right:0;
 	margin:0 auto;
 	bottom:30px;
 	width:170px;
+}
+
+div#page_head_icon{
+	float:right;
+}
+
+div#page_head_name{
+	float:right;
 }
