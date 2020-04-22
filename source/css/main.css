@@ -7,7 +7,7 @@ body{
 	background-image:url('../images/background.jpg');
 	background-attachment:fixed;
 	background-size:cover;
-	background-position:right 0;
+	background-position:right 0 center;
 	font-family:'Courier New','Microsoft Yahei';
 }
 
@@ -15,16 +15,13 @@ div#page_end{
 	position:fixed;
 	left:0;
 	right:0;
-	margin:0 auto;
 	bottom:21px;
-	width:170px;
+	width:100%;
+	height:18px;
 	font-weight:bold;
-	
-	-moz-user-select:none;/*火狐*/
-    -webkit-user-select:none;/*webkit浏览器*/
-    -ms-user-select:none;/*IE10*/
-    -khtml-user-select:none;/*早期浏览器*/
     user-select:none;
+	color:#32CD32;
+	text-align:center;
 }
 
 div#page_head{
@@ -34,12 +31,16 @@ div#page_head{
 	right:0;
 	width:100%;
 	height:40px;
-	background-color:rgba(248,248,255,0.8);
+	background-color:rgba(248,248,255,0.95);
 }
 
 div#page_head_icon{
+	height:32px;
+	width:32px;
 	float:right;
 	margin:4px 0;
+	border-radius:50%;
+	overflow:hidden;
 }
 
 div#page_head_name{
@@ -60,9 +61,10 @@ div#home{
 	margin:0 5%;
 	background-color:rgba(255,255,255,0.7);
 	overflow:hidden;
+	border-radius:3px;
 }
 
-div#mainbox{
+div#box_1{
 	height:100%;
 	width:calc(100% + 17px);
 	overflow:auto;
