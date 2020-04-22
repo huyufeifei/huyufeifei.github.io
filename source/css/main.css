@@ -40,23 +40,30 @@ div#page_head{
 	background-color:rgba(248,248,255,0.95);
 }
 
+a#myself{
+	height:32px;
+	width:110px;
+	float:right;
+	margin:4px 0;
+}
+
 div#page_head_icon{
 	height:32px;
 	width:32px;
-	float:right;
-	margin:4px 0;
+	float:left;
 	border-radius:50%;
 	overflow:hidden;
+	user-select:none;
 }
 
 div#page_head_name{
-	float:right;
+	float:left;
 	height:32px;
-	margin:4px 0;
 }
 
 p#page_head_name_1{
 	margin:7px 10px 7px 10px;
+	color:black;
 }
 
 div#home{
