@@ -15,9 +15,10 @@ body{
 	background-position:right 0 center;
 	background-repeat:no-repeat;
 	font-family:'Courier New',lolicon,'Microsoft Yahei';
+	word-break:break-all;
 }
 
-div#page_end{
+div#footer{
 	position:fixed;
 	left:0;
 	right:0;
@@ -30,7 +31,7 @@ div#page_end{
 	text-align:center;
 }
 
-div#page_head{
+div#header{
 	position:fixed;
 	top:0;
 	left:0;
@@ -38,31 +39,41 @@ div#page_head{
 	width:100%;
 	height:40px;
 	background-color:rgba(248,248,255,0.95);
+	user-select:none;
 }
 
-a#myself{
+a#header_home{
+	height:24px;
+	width:27px;
+	margin:8px 5% 8px 5%;
+	float:left;
+}
+
+a#header_myself{
 	height:32px;
 	width:110px;
 	float:right;
 	margin:4px 0;
 }
 
-div#page_head_icon{
+div#header_myself_icon{
 	height:32px;
 	width:32px;
 	float:left;
 	border-radius:50%;
 	overflow:hidden;
-	user-select:none;
 }
 
-div#page_head_name{
+div#header_myself_name{
 	float:left;
 	height:32px;
+	width:78px;
 }
 
-p#page_head_name_1{
-	margin:7px 10px 7px 10px;
+div#header_myself_name_1{
+	height:18px;
+	width:60px;
+	margin:7px auto;
 	color:black;
 }
 
@@ -78,7 +89,8 @@ div#home{
 }
 
 div#box_1{
-	height:100%;
-	width:calc(100% + 17px);
+	height:96%;
+	width:calc(98% + 17px);
 	overflow:auto;
+	margin:2% 0 2% 2%;
 }

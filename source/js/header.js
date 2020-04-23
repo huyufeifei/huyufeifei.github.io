@@ -1,0 +1,13 @@
+document.write("<div id=header>");
+document.write("    <a id=header_home href=\"\/\">");
+document.write("	  <img src=\"\/source\/images\/icon_home.ico\" height=24px>");
+document.write("	<\/a>");
+document.write("    <a id=header_myself href=\"\/pages\/about.html\">");
+document.write("	  <div id=header_myself_icon>");
+document.write("	    <img src=\"\/source\/images\/icon_lltq.jpg\" width=32px>");
+document.write("	  <\/div>");
+document.write("	  <div id=header_myself_name>");
+document.write("	    <div id=header_myself_name_1>lbdbcx<\/div>");
+document.write("	  <\/div>");
+document.write("	<\/a>");
+document.write("  <\/div>");
