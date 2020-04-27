@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<style>
+
+#float_ball_box {
+	position: fixed;
+	bottom: 5%;
+	right: 5%;
+	width: 50px;
+	height: 230px;
+}
+
+#float_ball_0 {
+	background-color: green;
+	display:block;
+	position:absolute;
+	bottom:0;
+}
+
+.float_ball_element {
+	width: 40px;
+	height: 40px;
+	margin: 5px;
+	border-radius:50%;
+	background-color: red;
+	display:none;
+}
+
+#float_ball_layer {
+	position:absolute;
+	width:40px;
+	height:40px;
+	bottom:0;
+	margin:5px;
+	border-radius:50%;
+}
+
+#T {
+	width:40px;
+	height:40px;
+	background-color:black;
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="T" onclick="window.location.href='http://baidu.com'"></div>
+
+2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />2<br />
+<div id="float_ball_box">
+
+	<div class="float_ball_element" onclick="alert('gjhgdjf')"></div>
+	<div class="float_ball_element"></div>
+	<div class="float_ball_element"></div>
+	<div class="float_ball_element"></div>
+	<div class="float_ball_element" id="float_ball_0"></div>
+
+	<div id="float_ball_layer" onmouseenter="enter()" onmouseout="out()"></div>
+	
+</div>
+
+<script>
+
+function enter() {
+	var x = document.getElementsByClassName("float_ball_element");
+	for(var i = 0; i < x.length; i++) {
+		x[i].style.display = "block";
+	}
+	var a = document.getElementById("float_ball_layer");
+	a.style.height = "230px";
+	a.style.borderRadius = "0";
+}
+
+function out() {
+	var x = document.getElementsByClassName("float_ball_element");
+	for(var i = 0; i < x.length; i++) {
+		if(x[i].id != "float_ball_0") {
+			x[i].style.display = "none";
+		}
+	}
+	var a = document.getElementById("float_ball_layer");
+	a.style.height = "40px";
+	a.style.borderRadius = "50%";
+}
+
+</script>
+
+</body>
+</html>

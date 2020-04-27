@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <title>测试JS的页面</title>
+    <meta charset="UTF-8">
+    <script src="/source/js/head.js"></script>
+</head>
+
+<body>
+
+    <script src="/source/js/header.js"></script>
+
+    <div id="home">
+        <div id="box_1">
+            <button id="X" onclick="fun()">
+                Go to Dark Mode!!
+            </button>
+            <p class="text"> 这是测试文字This is test text. </p>
+        </div>
+    </div>
+
+    <script>
+
+    var flag = 0;
+    function fun() {
+        if(flag == 0) {
+            // page go to dark
+            flag = 1;
+            document.getElementById("header").style.backgroundColor = "rgba(7,7,0,0.9)";
+            document.getElementById("home").style.backgroundColor = "rgba(7,7,0,0.6)";
+            var a = document.getElementsByClassName("text");
+            for(var i = 0; i < a.length; i++) {
+                a[i].style.color = "white";
+            }
+            a = document.getElementsByClassName("header_text");
+            for(var i = 0; i < a.length; i++) {
+                a[i].style.color = "white";
+            }
+			document.getElementById("header_home_icon").src = "/source/images/icon_home_dark.ico";
+			document.getElementById("X").innerHTML = "GO to Light Mode!!";
+        }
+        else {
+            // page go to light
+            flag = 0;
+            document.getElementById("header").style.backgroundColor = "rgba(248,248,255,0.95)";
+            document.getElementById("home").style.backgroundColor = "rgba(248,248,255,0.7)";
+            var a = document.getElementsByClassName("text");
+            for(var i = 0; i < a.length; i++) {
+                a[i].style.color = "";
+            }
+            a = document.getElementsByClassName("header_text");
+            for(var i = 0; i < a.length; i++) {
+                a[i].style.color = "";
+            }
+			document.getElementById("header_home_icon").src = "/source/images/icon_home.ico";
+			document.getElementById("X").innerHTML = "Go to Dark Mode!!";
+        }
+    }
+    </script>
+
+    <script src="/source/js/footer.js"></script>
+
+</body>>
