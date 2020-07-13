@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+#search_result_box > p {
+	display:none;
+}
+</style>
+
+</head>
+<body>
+<p> 这是一个搜索测试 </p>
+<div id="search_box">
+	<input id="search_input" type="text"></input>
+	<button onclick="submit()">search!!</button>
+<div>
+<div id="search_result_box">
+
+<p> 初雪樱 </p>
+<p> 初雪绫 </p>
+<p> 秽翼的尤斯蒂娅 </p>
+
+</div>
+
+<script>
+function submit() {
+	var goal = document.getElementById("search_input").value;
+	var a = document.getElementById("search_result_box");
+	var b = a.getElementsByTagName("p");
+	if(goal == "") {
+		for(var i = 0; i < b.length; i++) {
+			b[i].style.display = "none";
+		}
+		return;
+	}
+	for(var i = 0; i < b.length; i++) {
+		b[i].style.display = "none";
+		if(b[i].innerHTML.search(goal) != -1) {
+			b[i].style.display = "block";
+		}
+	}
+}
+</script>
+
+</body>
+</html>
