@@ -1,32 +1,57 @@
 @font-face{
 	font-family:'Courier New';
-	src:url('../fonts/cour.ttf');
+	src:url('/source/fonts/cour.ttf');
+}
+
+@font-face{
+	font-family:'m';
+	src:url('/source/fonts/muse.ttf')
 }
 
 body{
-	background-image:url('../images/background.jpg');
+	background-image:url('/source/images/background.jpg');
 	background-attachment:fixed;
 	background-size:cover;
-	background-position:right 0 center;
+	background-position:right 25% center;
 	background-repeat:no-repeat;
-	font-family:'Courier New','Microsoft Yahei';
+	font-family:'m', 'Courier New','Microsoft Yahei';
 	word-break:break-all;
 }
 
-div#footer{
+:visited, :link{
+	text-decoration: none;
+}
+
+::selection {
+	background-color:rgba(228, 150, 228, 0.5)
+}
+
+
+h1,h2,h3,h4,h5,h6{
+	margin:1rem 0;
+}
+
+#footer{
 	position:fixed;
 	left:0;
 	right:0;
-	bottom:21px;
-	width:100%;
-	height:18px;
+	bottom:1.5rem;
+	width:8.5rem;
+	height:1.2rem;
+	margin:0 auto 0;
+	background-color:rgba(118, 228, 236, 0.5);
 	font-weight:bold;
     user-select:none;
-	color:#32CD32;
+	color:blue;
 	text-align:center;
+	transition:0.4s;
+	border-radius: 0.5rem;
+}
+#footer:hover{
+	background-color:rgba(118, 228, 236, 1);
 }
 
-div#header{
+#header{
 	position:fixed;
 	top:0;
 	left:0;
@@ -37,21 +62,29 @@ div#header{
 	user-select:none;
 }
 
-a#header_home{
+#header_home{
 	height:24px;
 	width:24px;
 	margin:8px 5% 8px 5%;
 	float:left;
+	transition: 0.3s;
+}
+#header_home:hover{
+	margin:10px 5% 8px 5%;
 }
 
-a#header_myself{
+#header_myself{
 	height:32px;
 	width:110px;
 	float:right;
 	margin:4px 0;
+	transition: 0.3s;
+}
+#header_myself:hover{
+	margin: 6px 0;
 }
 
-div#header_myself_icon{
+#header_myself_icon{
 	height:32px;
 	width:32px;
 	float:left;
@@ -59,33 +92,54 @@ div#header_myself_icon{
 	overflow:hidden;
 }
 
-div#header_myself_name{
+#header_myself_name{
 	float:left;
 	height:32px;
 	width:78px;
 }
 
-div#header_myself_name_1{
+#header_myself_name_1{
 	height:18px;
 	width:60px;
 	margin:7px auto;
 	color:black;
 }
 
-div#home{
-	position:fixed;
-	top:60px;
-	bottom:60px;
-	width:90%;
-	margin:0 5%;
+.box {
+	padding:1%;
 	background-color:rgba(255,255,255,0.7);
-	overflow:hidden;
-	border-radius:3px;
+	overflow:auto;
+	border-radius:1rem;
 }
 
-div#box_1{
-	height:96%;
-	width:calc(98% + 17px);
-	overflow:auto;
-	margin:2% 0 2% 2%;
+#main_box{
+	position: absolute;
+	top:60px;
+	bottom:3.7rem;
+	width:60%;
+	left:5%;
+}
+
+#sidebar{
+	position: absolute;
+	top:60px;
+	width:15%;
+	left:70%;
+}
+
+.round_button {
+	height:1.2rem;
+	background-color:rgba(152, 241, 141, 0.5);
+    user-select:none;
+	color:black;
+	display:inline;
+	padding:0.1rem 0.5rem;
+	line-height: 2rem;
+	width:auto;
+	border-radius: 0.6rem;
+	transition:0.4s;
+	word-break:keep-all;
+}
+.round_button:hover{
+	background-color:rgb(59, 202, 90, 1);
 }

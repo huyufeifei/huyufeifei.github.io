@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <title>markdown test page</title>
+  <meta charset="utf-8"/>
+  <script src="/source/js/head.js"></script>
+</head>
+<body>
+  <script src="/source/js/header.js"></script>
+
+  
+    <div id=box_1>
+
+  <div id="content" class="markdown-body"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    document.getElementById('content').innerHTML =
+      marked('# h1 \n ## h2 \n ### h3 \n #### h4 \n ---- \n **strong** normal *thin* normal ~del~ ');
+  </script>
+  
+    </div>
+  
+
+  <script src="/source/js/footer.js"></script>
+</body>
+</html>
