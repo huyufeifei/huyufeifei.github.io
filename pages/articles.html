@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Articles</title>
+  <meta charset="UTF-8">
+  <script src="/source/js/head.js"></script>
+</head>
+<body>
+  
+  <script src="/source/js/header.js"></script>
+
+
+	<div id="main_box" class="box">
+        <div id="container" class='markdown-body'>
+            
+        </div>
+    </div>
+    
+    <script>
+        window.onload = function() {
+            var x = loadFile('/articles/0000.md');
+            var y = marked(x);
+            document.getElementById('container').innerHTML = y;
+        }
+
+        function loadFile(filePath) {
+            var result = null;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", filePath, false);
+            xmlhttp.send();
+            if (xmlhttp.status==200) {
+                result = xmlhttp.responseText;
+            }
+            return result;
+        }
+
+    </script>
+
+
+	<div id="sidebar" class="box">
+		<h2>Links</h2>
+		<a href="https://disviel.github.io" target="_blank" class="round_button">disviel</a>
+		<a href="https://butterflydew.github.io" target="_blank" class="round_button">dew</a> 
+	  </div>
+  
+  <script src="/source/js/footer.js"></script>
+  
+</body>
+</html>
