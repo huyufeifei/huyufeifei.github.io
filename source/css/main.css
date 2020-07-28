@@ -20,6 +20,7 @@ body{
 
 :visited, :link{
 	text-decoration: none;
+	color: black;
 }
 
 ::selection {
@@ -63,14 +64,14 @@ h1,h2,h3,h4,h5,h6{
 }
 
 #header_home{
-	height:24px;
+	height:32px;
 	width:24px;
-	margin:8px 5% 8px 5%;
+	margin:4px 5% 4px 5%;
 	float:left;
-	transition: 0.3s;
+	transition: 0.1s;
 }
 #header_home:hover{
-	margin:10px 5% 8px 5%;
+	margin:6px 5% 4px 5%;
 }
 
 #header_myself{
@@ -78,7 +79,7 @@ h1,h2,h3,h4,h5,h6{
 	width:110px;
 	float:right;
 	margin:4px 0;
-	transition: 0.3s;
+	transition: 0.1s;
 }
 #header_myself:hover{
 	margin: 6px 0;

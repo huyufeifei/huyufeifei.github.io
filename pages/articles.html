@@ -11,34 +11,54 @@
 
 
 	<div id="main_box" class="box">
-        <div id="container" class='markdown-body'>
-            
-        </div>
-    </div>
+    
+  </div>
     
     <script>
-        window.onload = function() {
-            var x = loadFile('/articles/0000.md');
-            var y = marked(x);
-            document.getElementById('container').innerHTML = y;
-        }
 
-        function loadFile(filePath) {
-            var result = null;
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("GET", filePath, false);
-            xmlhttp.send();
-            if (xmlhttp.status==200) {
-                result = xmlhttp.responseText;
-            }
-            return result;
+      document.addEventListener('DOMContentLoaded', getArticles());
+
+      function getArticles() {
+        var i = 0;
+        while(true) {
+          var name = '/articles/' + String(i) + '.md';
+          var x = loadFile(name);
+          if(x == 'ERR') {
+            break;
+          }
+          var y = marked(x);
+          var ele = document.createElement('div');
+          ele.className = 'markdown-body';
+          ele.style.border = '1px solid black';
+          ele.style.borderRadius = '2rem';
+          ele.style.padding = '1rem';
+          ele.style.marginBottom = '1rem';
+          ele.innerHTML = y;
+          var parentNode = document.getElementById('main_box');
+          parentNode.insertBefore(ele, parentNode.firstChild);
+          i = i + 1;
         }
+        if(i == 0) {
+          document.getElementById('main_box').innerHTML = '<h1>一篇文章都没有...</h1>';
+        }
+      }
+
+      function loadFile(filePath) {
+          var result = 'ERR';
+          var xmlhttp = new XMLHttpRequest();
+          xmlhttp.open("GET", filePath, false);
+          xmlhttp.send();
+          if (xmlhttp.status==200) {
+              result = xmlhttp.responseText;
+          }
+          return result;
+      }
 
     </script>
 
 
 	<div id="sidebar" class="box">
-		<h2>Links</h2>
+		<h2>Friends</h2>
 		<a href="https://disviel.github.io" target="_blank" class="round_button">disviel</a>
 		<a href="https://butterflydew.github.io" target="_blank" class="round_button">dew</a> 
 	  </div>

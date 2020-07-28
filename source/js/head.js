@@ -4,5 +4,4 @@ document.write("  <link rel=\"stylesheet\" type=\"text/css\" href=\"/source/css/
 document.write("  <link rel=\"shortcut icon\" href=\"/source/images/favicon.ico\" />");
 document.write("  <link rel=\"bookmark\" href=\"/source/images/favicon.ico\" />");
 document.write("  <script src=\"https://cdn.jsdelivr.net/npm/marked/marked.min.js\"></script>")
-document.write("  <link href=\"//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\" rel=\"stylesheet\">")
-                        
+document.write("  <link rel=\"stylesheet\" type=\"text/css\" href=\"/source/fontawesome/css/all.css\">");
