@@ -1,0 +1,14 @@
+body{
+    background-color: khaki;
+}
+p{
+    color:blue;
+    background-color: red;
+    font-size: 2rem;
+    font-family: 'Macrosoft Yahei';
+    padding:1rem;
+    border-radius: 1rem;
+    margin: 2rem;
+    width:auto;
+    text-align: center;
+}

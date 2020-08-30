@@ -44,14 +44,14 @@
       }
 
       function loadFile(filePath) {
-          var result = 'ERR';
-          var xmlhttp = new XMLHttpRequest();
-          xmlhttp.open("GET", filePath, false);
-          xmlhttp.send();
-          if (xmlhttp.status==200) {
-              result = xmlhttp.responseText;
-          }
-          return result;
+        var result = 'ERR';
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", filePath, false);
+        xmlhttp.send();
+        if (xmlhttp.status==200) {
+          result = xmlhttp.responseText;
+        }
+        return result;
       }
 
     </script>
@@ -61,7 +61,7 @@
 		<h2>Friends</h2>
 		<a href="https://disviel.github.io" target="_blank" class="round_button">disviel</a>
 		<a href="https://butterflydew.github.io" target="_blank" class="round_button">dew</a> 
-	  </div>
+  </div>
   
   <script src="/source/js/footer.js"></script>
   

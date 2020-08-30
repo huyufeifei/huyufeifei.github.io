@@ -12,7 +12,7 @@
   
   
   <div id="main_box" class="box">
-    <h1 style="text-align:center; font-size:4rem;">Articles</h1>
+    <h1>Articles</h1>
 	</div>
   
   <script>
@@ -45,7 +45,7 @@
         i = i + 1;
       }
       if(i == 0) {
-        document.getElementById('main_box').innerHTML = '<h1>一篇文章都没有...</h1>';
+        document.getElementById('main_box').innerHTML = '<h2>一篇文章都没有...</h2>';
       }
     }
 
@@ -62,10 +62,23 @@
 
   </script>
   
-  <div id="sidebar" class="box">
-    <h2>Friends</h2>
-    <a href="https://disviel.github.io" target="_blank" class="round_button">disviel</a>
-    <a href="https://butterflydew.github.io" target="_blank" class="round_button">dew</a> 
+  <div id='sidebar'>
+  
+    <div class='box' id='sidebar_myself'>
+      <a href='/pages/about.html'>
+      <li style='height:128px;width:128px;border-radius:50%;overflow:hidden;margin:0 auto;'>
+      <img src='/source/images/lltq.jpg' width='128px'/>
+      </li>
+      </a>
+      <p style='display:block;text-align:center;font-size:2rem;margin-top:1rem;'>lbdbcx</p>
+    </div>
+
+    <div class="box">
+      <h2>Friends</h2>
+      <a href="https://disviel.github.io" target="_blank" class="round_button">disviel</a>
+      <a href="https://butterflydew.github.io" target="_blank" class="round_button">dew</a> 
+    </div>
+
   </div>
   
   <!-- footer开始 -->

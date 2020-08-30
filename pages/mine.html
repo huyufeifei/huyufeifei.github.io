@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>扫雷</title>
+</head>
+
+<style>
+@font-face{
+	font-family:'loli';
+	src:url('/source/fonts/loli.ttf')
+}
+body{
+    background-color: aquamarine;
+    font-family: 'courier New', 'loli', '仿宋', 'Microsoft Yahei';
+    user-select: none;
+}
+h1{
+    text-align: center;
+}
+#main_box{
+    background-color:blueviolet;
+    width:10rem;
+    height:10rem;
+    margin:auto auto 2rem auto; /* make this element in center*/
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+}
+.co_box{
+    background-color: chocolate;
+    display: block;
+    border-radius: 0.4rem;
+    padding:0.5rem;
+    line-height: 3rem;
+}
+#test1{
+    margin-top: 2rem;
+}
+#test2{
+    margin:0 auto;
+    display: block;
+}
+button{
+    font-family: 'loli';
+    font-size: 1.5rem;
+    
+    border-radius: 0.3rem;
+    background-color:cyan;
+    border-color: black;
+    border-width: 0.3rem;
+}
+</style>
+
+<body>
+
+<h1>扫雷(本页面未完成)</h1>
+
+<div id='main_box'>
+hello
+</div>
+
+<div class='co_box'>
+    长：&emsp;&emsp;&emsp;
+    <input /><br />
+    宽：&emsp;&emsp;&emsp;
+    <input /> 
+    &emsp;&emsp;
+    <button onclick="newGame()">
+        start
+    </button> <br />
+    地雷个数：
+    <input />
+    
+</div>
+
+<div class='co_box' id='test1'>
+    <button id='test2'>
+        start
+    </button>
+</div>
+
+</body>
+
+<script>
+
+    // init
+    var map = new Array(20);
+    for(var i = 0; i < 20; i++) {
+        map[i] = new Array(20);
+        for(var j = 0; j < 20; j++) {
+            map[i][j] = 0;
+        }
+    }
+    // init over
+
+    function makeMap() {
+        var n, m, x;
+        
+        if(n < 1 || m < 1 || n > 20 || m > 20) {
+            return false;
+        }
+        if(((n * m) < x) || x < 0) {
+            return false;
+        }
+        
+        return true;
+    }
+
+    function newGame() {
+        if(!makeMap()) {
+
+            return;
+        }
+
+    }
+
+</script>
+</html>
