@@ -93,12 +93,19 @@ button{
     border-color: black;
     border-width: 0;
 }
+#footer{
+    position: fixed;
+    bottom: 10px;
+    text-align: center;
+    width:100%;
+}
+
 </style>
 
 <body>
 
 
-<h1>扫雷(本页面未完成)</h1>
+<h1>扫雷</h1>
 
 <div id='main_box'>
 <div id='die'><i class="fas fa-times" id='die_fa'></i></div>
@@ -128,6 +135,11 @@ button{
     </table>
     <button onclick='newGame()'>start</button>
 </div>
+<br /><br /><br />
+<div id='footer'>
+    made by lbdbcx<br />
+    v1.0
+</div>
 
 </body>
 
@@ -137,7 +149,7 @@ button{
         return false;
     }
 
-    var map, seed, MO = 32768, count = 0, row, line;
+    var map, seed, MO = 32768, count, row, line, white;
 
     window.onload=(function random_init() {
         var date=new Date();  
@@ -189,6 +201,7 @@ button{
         document.getElementById('win').style.display = 'none';
         document.getElementById('die_fa').style.display = 'none';
         document.getElementById('win_fa').style.display = 'none';
+        bug = 0;
         map = new Array(row);
         for(var i = 0; i < row; i++) {
             map[i] = new Array(line);
@@ -290,6 +303,7 @@ button{
             return;
         }
         map[x][y] = 6;
+        white--;
         show(x, y);
         if(getNum(x, y) == 0) {
             openIt(x - 1, y - 1);
@@ -317,6 +331,9 @@ button{
         }
         else {
             openIt(x, y);
+            if(count == 0 && white == 0) {
+                gameWin();
+            }
         }
     }
 
@@ -331,9 +348,9 @@ button{
             if(map[x][y] == 5) {
                 count++;
             }
-        }
-        if(count == 0) {
-            gameWin();
+            if(count == 0 && white == 0) {
+                gameWin();
+            }
         }
     }
 
@@ -364,9 +381,13 @@ button{
         row = document.getElementById('row').value;
         line = document.getElementById('line').value;
         count = document.getElementById('count').value;
+        white = row * line - count;
         if(check()) {
             init();
             showMap();
+            if(count == 0) {
+                gameWin();
+            }
         }
     }
 
