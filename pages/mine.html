@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>扫雷</title>
+    <link rel="stylesheet" type="text/css" href="/source/fontawesome/css/all.css">
 </head>
 
 <style>
@@ -12,7 +14,7 @@
 	src:url('/source/fonts/loli.ttf')
 }
 body{
-    background-color: aquamarine;
+    background-color: #eebefa;
     font-family: 'courier New', 'loli', '仿宋', 'Microsoft Yahei';
     user-select: none;
 }
@@ -20,99 +22,352 @@ h1{
     text-align: center;
 }
 #main_box{
-    background-color:blueviolet;
+    background-color:#be4bdb;
     width:10rem;
     height:10rem;
     margin:auto auto 2rem auto; /* make this element in center*/
     border-radius: 0.4rem;
-    padding: 0.5rem;
+    padding:10px;
+    position: relative;
+}
+#die{
+    margin:-10px;
+    height:100%;
+    width:100%;
+    position:absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0.4rem;
+    text-align: center;
+    display: none;
+}
+#die_fa{
+    color:red;
+    opacity: 50%;
+}
+#win{
+    margin:-10px;
+    height:100%;
+    width:100%;
+    position:absolute;
+    border-radius: 0.4rem;
+    text-align: center;
+    display: none;
+}
+#win_fa{
+    color:#99f158;
+    opacity: 0.7;
+}
+#main_table{
+    margin:0;
+    padding:0;
+    border-collapse: collapse;
+    text-align: center;
+    color:rgb(92,61,84);
+    font-weight: 900;
+}
+#main_table .fa-flag{
+    color:red;
 }
 .co_box{
-    background-color: chocolate;
+    background-color: #e599f7;
     display: block;
     border-radius: 0.4rem;
     padding:0.5rem;
     line-height: 3rem;
 }
-#test1{
-    margin-top: 2rem;
-}
-#test2{
-    margin:0 auto;
+.co_box table{
     display: block;
+    margin:auto;
+    width:30rem;
+}
+.co_box button{
+    display: block;
+    margin:auto;
 }
 button{
     font-family: 'loli';
     font-size: 1.5rem;
     
     border-radius: 0.3rem;
-    background-color:cyan;
+    background-color:#cc5de8;
     border-color: black;
-    border-width: 0.3rem;
+    border-width: 0;
 }
 </style>
 
 <body>
 
+
 <h1>扫雷(本页面未完成)</h1>
 
 <div id='main_box'>
-hello
+<div id='die'><i class="fas fa-times" id='die_fa'></i></div>
+<div id='win'><i class="fas fa-check" id='win_fa'></i></div>
+<table id=main_table border="1">
+
+</table>
 </div>
 
 <div class='co_box'>
-    长：&emsp;&emsp;&emsp;
-    <input /><br />
-    宽：&emsp;&emsp;&emsp;
-    <input /> 
-    &emsp;&emsp;
-    <button onclick="newGame()">
-        start
-    </button> <br />
-    地雷个数：
-    <input />
-    
-</div>
-
-<div class='co_box' id='test1'>
-    <button id='test2'>
-        start
-    </button>
+    <table>
+        <tr>
+            <td style='float:right'>行：</td>
+            <td><input type='text' value='10' id='row'/></td>
+            <td id='error_row'>行数在1~20范围内</td>
+        </tr>
+        <tr>
+            <td style='float:right'>列：</td>
+            <td><input type='text' value='10' id='line'/></td>
+            <td id='error_line'>列数在1~30范围内</td>
+        </tr>
+        <tr>
+            <td style='float:right'>地雷个数：</td>
+            <td><input type='text' value='20' id='count'/></td>
+            <td id='error_count'>地雷数在0~总格子数范围内</td>
+        </tr>
+    </table>
+    <button onclick='newGame()'>start</button>
 </div>
 
 </body>
 
 <script>
 
-    // init
-    var map = new Array(20);
-    for(var i = 0; i < 20; i++) {
-        map[i] = new Array(20);
-        for(var j = 0; j < 20; j++) {
-            map[i][j] = 0;
+    document.oncontextmenu = function(e) {
+        return false;
+    }
+
+    var map, seed, MO = 32768, count = 0, row, line;
+
+    window.onload=(function random_init() {
+        var date=new Date();  
+        var hh=date.getHours();            
+        var mm=date.getMinutes();           
+        var ss=date.getSeconds();                   
+        var dd=date.getDate() - 1;
+        var MM=date.getMonth();  //因为1月这个方法返回为0，所以加1          
+        seed = (((((MM * 31 + dd) * 24) + hh) * 60 % MO + mm) * 60 + ss) % MO;
+    })
+
+    function rand(l, r) {
+        seed = (348 * seed % MO * seed % MO + 483 * seed % MO + 3247) % MO;
+        return (seed % (r - l + 1)) + l;
+    }
+
+    function random_shuffle(a, n) {
+        for(var i = 0; i < n - 1; i++) {
+            var x = rand(i, n - 1);
+            var temp = a[x];
+            a[x] = a[i];
+            a[i] = temp;
         }
     }
-    // init over
 
-    function makeMap() {
-        var n, m, x;
-        
-        if(n < 1 || m < 1 || n > 20 || m > 20) {
-            return false;
+    function haveMine(x, y) {
+        if(x < 0 || y < 0 || x >= row || y >= line) {
+            return 0;
         }
-        if(((n * m) < x) || x < 0) {
-            return false;
+        return map[x][y] & 1;
+    }
+
+    function getNum(x, y) {
+        var ans = 0;
+        ans += haveMine(x - 1, y - 1);
+        ans += haveMine(x - 1, y);
+        ans += haveMine(x - 1, y + 1);
+        ans += haveMine(x, y - 1);
+        ans += haveMine(x, y);
+        ans += haveMine(x, y + 1);
+        ans += haveMine(x + 1, y - 1);
+        ans += haveMine(x + 1, y);
+        ans += haveMine(x + 1, y + 1);
+        return ans;
+    }
+    
+    function init() {
+        document.getElementById('die').style.display = 'none';
+        document.getElementById('win').style.display = 'none';
+        document.getElementById('die_fa').style.display = 'none';
+        document.getElementById('win_fa').style.display = 'none';
+        map = new Array(row);
+        for(var i = 0; i < row; i++) {
+            map[i] = new Array(line);
         }
-        
-        return true;
+        var n = row * line;
+        var a = new Array(n);
+        for(var i = 0; i < count; i++) {
+            a[i] = 1;
+        }
+        for(var i = count; i < n; i++) {
+            a[i] = 0;
+        }
+        random_shuffle(a, n);
+        for(var i = 0; i < row; i++) {
+            for(var j = 0; j < line; j++) {
+                map[i][j] = a[i * line + j];
+            }
+        }
+        // UI init
+        var e = document.getElementById('main_box');
+        e.style.width = String(line * 31 + 1) + 'px';
+        e.style.height = String(row * 31 + 1) + 'px';
+        e = document.getElementById('main_table');
+        while(e.childElementCount) {
+            e.removeChild(e.lastChild);
+        }
+        for(var i = 0; i < row; i++) {
+            var tr = document.createElement('tr');
+            for(var j = 0; j < line; j++) {
+                var td = document.createElement('td');
+                td.style.width='30px';
+                td.style.height='30px';
+                td.style.padding='0';
+                td.style.backgroundColor='#d579ec';
+                td.id = String(i * line + j);
+                td.onclick=Function('open(' + String(i * line + j) + ')');
+                td.oncontextmenu=Function('change(' + String(i * line + j) + ')');
+                tr.appendChild(td);
+            }
+            e.appendChild(tr);
+        }
+    }
+
+    // 0 noshow_no 
+    // 1 noshow_have
+    // 2 noshow_flag_mine_no
+    // 3 noshow_flag_mine_have
+    // 4 noshow_flag_?_no
+    // 5 noshow_flag_?_have
+    // 6 show (must no)
+
+    function show(x, y) {
+        var a = '', e = document.getElementById(String(x * line + y));
+        if(map[x][y] < 2) {
+            e.style.backgroundColor='#d579ec'; // purple
+        }
+        else if(map[x][y] < 4) {
+            a = '<i class="fas fa-flag"></i>'
+            e.style.backgroundColor = '#7985a0';
+        }
+        else if(map[x][y] < 6) {
+            a = '<i class="fas fa-question"></i>';
+            e.style.backgroundColor='#d579ec';
+        }
+        else {
+            var num = getNum(x, y);
+            if(num) {
+                a = String(num);
+            }
+            e.style.backgroundColor = '#7985a0';
+        }
+        e.innerHTML = a;
+    }
+
+    function showMap() {
+        for(var i = 0; i < row; i++) {
+            for(var j = 0; j < line; j++) {
+                show(i, j);
+            }
+        }
+    }
+
+    function gameLose() {
+        document.getElementById('die').style.display = 'block';
+        var e = document.getElementById('die_fa');
+        e.style.fontSize = String(Math.min(row, line) * 30) + 'px';
+        e.style.display = 'inline';
+    }
+
+    function gameWin() {
+        document.getElementById('win').style.display = 'block';
+        var e = document.getElementById('win_fa');
+        e.style.fontSize = String(Math.min(row, line) * 30) + 'px';
+        e.style.display = 'inline';
+    }
+
+    function openIt(x, y) {
+        if(x < 0 || y < 0 || x >= row || y >= line || map[x][y] == 6) {
+            return;
+        }
+        map[x][y] = 6;
+        show(x, y);
+        if(getNum(x, y) == 0) {
+            openIt(x - 1, y - 1);
+            openIt(x - 1, y);
+            openIt(x - 1, y + 1);
+            openIt(x, y - 1);
+            openIt(x, y);
+            openIt(x, y + 1);
+            openIt(x + 1, y - 1);
+            openIt(x + 1, y);
+            openIt(x + 1, y + 1);
+        }
+    }
+
+    function open(id) {
+        var e = document.getElementById(id), x = parseInt(id / line), y = id % line;
+        if(map[x][y] == 6 || map[x][y] == 2 || map[x][y] == 3) {
+            return;
+        }
+        if(map[x][y] & 1) {
+            // boom
+            e.innerHTML = '<i class="fas fa-bomb"></i>';
+            e.style.backgroundColor = 'red';
+            gameLose();
+        }
+        else {
+            openIt(x, y);
+        }
+    }
+
+    function change(id) {
+        var e = document.getElementById(id), x = parseInt(id / line), y = id % line;
+        if(map[x][y] < 6) {
+            map[x][y] = (map[x][y] + 2) % 6;
+            show(x, y);
+            if(map[x][y] == 3) {
+                count--;
+            }
+            if(map[x][y] == 5) {
+                count++;
+            }
+        }
+        if(count == 0) {
+            gameWin();
+        }
+    }
+
+    function check() {
+        var flag = true;
+        if(row < 1 || row > 20) {
+            var e = document.getElementById('error_row');
+            e.style.color='red';
+            flag = false;
+        }
+        if(line < 1 || line > 30) {
+            var e = document.getElementById('error_line');
+            e.style.color='red';
+            flag = false;
+        }
+        if((count > (row * line)) || count < 0) {
+            var e = document.getElementById('error_count');
+            e.style.color='red';
+            flag = false;
+        }
+        return flag;
     }
 
     function newGame() {
-        if(!makeMap()) {
-
-            return;
+        document.getElementById('error_row').style.color='black';
+        document.getElementById('error_line').style.color='black';
+        document.getElementById('error_count').style.color='black';
+        row = document.getElementById('row').value;
+        line = document.getElementById('line').value;
+        count = document.getElementById('count').value;
+        if(check()) {
+            init();
+            showMap();
         }
-
     }
 
 </script>
