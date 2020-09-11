@@ -1,0 +1,1 @@
+document.write(loadFile('/source/html/sidebar.html'));

@@ -160,3 +160,9 @@ h1{
 .round_button:hover{
 	background-color:rgb(59, 202, 90, 1);
 }
+
+.subtitle{
+	text-align: center;
+	font-family:m;
+	font-size: 1.3em;
+}
