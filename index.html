@@ -13,57 +13,9 @@
   
   
   <div id="main_box" class="box">
-    <h1>Articles</h1>
+    <h2>老婆！</h2>
 	</div>
 
 </body>
-
-<script>
-
-  document.addEventListener('DOMContentLoaded', getArticles());
-
-  function getArticles() {
-    var i = 0, before = null, parentNode = document.getElementById('main_box');
-    while(true) {
-      var name = '/articles/' + String(i) + '.md';
-      var x = loadFile(name);
-      if(x == 'ERR') {
-        break;
-      }
-      x = marked(x);
-      x = myMarked(x);
-      var ele = document.createElement('div');
-      ele.className = 'markdown-body';
-      ele.id = 'article' + String(i);
-      ele.style.border = '1px solid black';
-      ele.style.borderRadius = '2rem';
-      ele.style.padding = '1rem';
-      ele.style.marginBottom = '1rem';
-      ele.innerHTML = x;
-      if(before == null) {
-        parentNode.appendChild(ele);
-      }
-      else {
-        parentNode.insertBefore(ele, before);
-      }
-      before = parentNode.childNodes[2];
-      i = i + 1;
-    }
-    if(i == 0) {
-      document.getElementById('main_box').innerHTML = '<h2>一篇文章都没有...</h2>';
-    }
-  }
-
-  function myMarked(s) {
-    var id = s.indexOf('$');
-    if(id == -1) {
-      return String(s);
-    }
-    s = s.substr(0, id) + '<div class="subtitle">' + s.substr(id + 1);
-    id = s.indexOf('$');
-    s = s.substr(0, id) + '</div>' + s.substr(id + 1);
-    return String(s);
-  }
-</script>
 
 </html>

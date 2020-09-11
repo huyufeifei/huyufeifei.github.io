@@ -24,7 +24,7 @@ body{
 }
 
 ::selection {
-	background-color:rgba(228, 150, 228, 0.5)
+	background-color:rgba(228, 150, 228, 0.5);
 }
 
 
@@ -60,38 +60,37 @@ h1{
 	position:fixed;
 	top:0;
 	left:0;
-	right:0;
 	width:100%;
-	height:40px;
+	height:50px;
 	background-color:rgba(248,248,255,0.95);
 	user-select:none;
 }
 
-#header_home{
-	height:32px;
-	width:24px;
-	margin:4px 5% 4px 5%;
+.header_item{
+	height:40px;
+	width:40px;
+	margin:8px 0 2px 5%;
 	float:left;
 	transition: 0.1s;
 }
-#header_home:hover{
-	margin:6px 5% 4px 5%;
+.header_item:hover{
+	margin:10px 0 0 5%;
 }
 
 #header_myself{
-	height:32px;
-	width:110px;
+	height:36px;
+	width:150px;
 	float:right;
-	margin:4px 0;
+	margin:7px 0 0 0;
 	transition: 0.1s;
 }
 #header_myself:hover{
-	margin: 6px 0;
+	margin: 9px 0;
 }
 
 #header_myself_icon{
-	height:32px;
-	width:32px;
+	height:36px;
+	width:36px;
 	float:left;
 	border-radius:50%;
 	overflow:hidden;
@@ -99,15 +98,8 @@ h1{
 
 #header_myself_name{
 	float:left;
-	height:32px;
-	width:78px;
-}
-
-#header_myself_name_1{
-	height:18px;
-	width:60px;
-	margin:7px auto;
-	color:black;
+	font-size:1.5em;
+	margin:3px 10px;
 }
 
 .box {
@@ -120,7 +112,7 @@ h1{
 
 #main_box{
 	position: absolute;
-	top:60px;
+	top:70px;
 	bottom:3.7rem;
 	width:60%;
 	left:5%;
@@ -128,7 +120,7 @@ h1{
 
 #sidebar{
 	position: absolute;
-	top:60px;
+	top:70px;
 	width:15%;
 	left:70%;
 	user-select: none;
@@ -161,6 +153,41 @@ h1{
 	background-color:rgb(59, 202, 90, 1);
 }
 
+.article{
+	border:black solid 1px;
+	padding:1rem;
+	border-radius: 2rem;
+	position: relative;
+	height:20em;
+	overflow:hidden;
+	margin-bottom:1rem;
+}
+.curtain{
+	background-image: linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0.8),rgba(255,255,255,1));
+	position:absolute;
+	width:100%;
+	height:4em;
+	bottom:0;
+	left:0;
+	user-select:none;
+}
+.curtain .rdm{
+	width:7em;
+	margin:2em auto 1em;
+	border:black solid 2px;
+	text-align:center;
+	border-radius:1em;
+}
+.cls{
+	width:4em;
+	margin:auto;
+	bottom: 0;
+	position: absolute;
+	border:black solid 2px;
+	text-align:center;
+	border-radius:1em;
+	display:none;
+}
 .subtitle{
 	text-align: center;
 	font-family:m;
