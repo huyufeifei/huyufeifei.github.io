@@ -184,7 +184,8 @@ img {
 }
 .cls{
 	width:4em;
-	margin:auto;
+	left:50%;
+	margin:0 0 1em -2em;
 	bottom: 0;
 	position: absolute;
 	border:black solid 2px;
