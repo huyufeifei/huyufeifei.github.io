@@ -36,6 +36,10 @@ h1{
 	text-align:center;
 }
 
+img {
+	user-select: none;
+}
+
 #footer{
 	position:fixed;
 	left:0;
