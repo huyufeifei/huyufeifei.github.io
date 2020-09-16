@@ -148,7 +148,7 @@ img {
 	display:inline;
 	padding:0.1rem 0.5rem;
 	line-height: 2rem;
-	width:auto;
+	/*width:auto;*/
 	border-radius: 0.6rem;
 	transition:0.4s;
 	word-break:keep-all;
