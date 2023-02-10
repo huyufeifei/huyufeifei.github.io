@@ -1,0 +1,132 @@
+#outer_container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+#main_container {
+	flex-grow: 0;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+}
+h1 {
+	text-align: center;
+}
+#inner_container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+#setting_container {
+	flex-grow: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 13rem;
+	/* width: 20rem; */
+	margin: 1rem;
+}
+#place {
+	flex-grow: 1;
+}
+input {
+	font-size: 1.3em;
+	padding: 0.2rem 0.7rem;
+	border-radius: 1rem;
+	font-family: "Courier New";
+	margin: 0.3rem auto;
+	border: 1px solid grey;
+	text-align: center;
+	width: 3rem;
+	background-color: transparent;
+}
+#main_container input {
+	border: 1px solid transparent;
+	font-size: 3.5rem;
+	border-radius: 3rem;
+	margin: 0.5rem auto;
+	width: 80%;
+	align-content: center;
+}
+#main_container input:hover {
+	border: 1px solid grey;
+	border-radius: 3rem;
+}
+button {
+	font-size: 1.2em;
+	font-family: "Courier New";
+	user-select: none;
+	padding: 0.2rem 0.7rem;
+	margin: 0.5rem;
+	border: 0;
+	border-radius: 1rem;
+	transition: all 0.2s ease 0s;
+}
+.blue:hover {
+	background-color:#00aaff;
+	/* color:black; */
+}
+.blue {
+	background-color: #00ccff;
+}
+.item {
+	width: 12em;
+	height: 15em;
+	margin: 3px;
+	border-radius: 10px;
+	border: black solid 4px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+.item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.item span {
+	text-align: center;
+	height: fit-content;
+}
+#creator {
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	width: 30rem;
+	height: fit-content;
+	margin: auto;
+	background-color: #ffffffff;
+	padding: 0.7rem;
+	border-radius: 1rem;
+	border: 2px solid grey;
+}
+#btnBox {
+	display: flex;
+	justify-content: space-around;
+}
+.w-full {
+	width: auto;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
+.grow-1 {
+	flex-grow: 1;
+}
+span {
+	position: relative;
+}
+span button {
+	position: absolute;
+	top: -2.5rem;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	background-color: #ff4444;
+	display: none;
+}

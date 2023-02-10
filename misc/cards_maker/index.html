@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>表格生成器</title>
+	<link rel="stylesheet" type="text/css" href="main.css" />
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+		integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+	<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+	<script src="main.js"></script>
+</head>
+
+<body>
+	<div id="outer_container">
+		<div id="setting_container">
+			<button onclick="new_item()" class="blue">new</button>
+			<input placeholder="宽度" class="lc" onchange="chW(this.value)" />
+			<input placeholder="高度" class="lc" onchange="chH(this.value)" />
+			<input placeholder="间隔" class="lc" onchange="chM(this.value)" />
+			<input placeholder="总宽" class="lc" onchange="chTW(this.value)" />
+		</div>
+		<div id="main_container">
+			<input placeholder="咖喱喜好表" class="w-full"></input>
+			<div id="inner_container">
+			</div>
+		</div>
+		<div id="place"></div>
+	</div>
+
+	<div id="creator">
+		<input class="w-full" placeholder="上标题(选填)" id="tt" />
+		<input class="w-full" placeholder="图片链接(选填)" id="iu" />
+		<input class="w-full" placeholder="下标题(选填)" id="stt" />
+		<div id="btnBox">
+			<button class="grow-1" onclick="cancel()">取消</button>
+			<button class="grow-1 blue" onclick=" show_item()">确定</button>
+		</div>
+	</div>
+</body>
+
+
+</html>
